@@ -1,0 +1,10 @@
+@import url("https://fonts.googleapis.com/css2?family=Jersey+10&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins&display=swap");
+
+body {
+    margin: 0;
+    font-family: "Jersey 10", sans-serif;
+    font-weight: 400;
+    font-style: normal;
+    background-color: #0c0e16;
+    color: white;
+}
