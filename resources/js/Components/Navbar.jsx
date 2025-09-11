@@ -66,7 +66,7 @@ export default () => {
     const navigation = [
         { title: "Customers", path: "javascript:void(0)" },
         { title: "Careers", path: "javascript:void(0)" },
-        { title: "Guides", path: "javascript:void(0)" },
+        { title: "Blog", path: route("news.index") },
         { title: "Partners", path: "javascript:void(0)" },
     ];
     return (

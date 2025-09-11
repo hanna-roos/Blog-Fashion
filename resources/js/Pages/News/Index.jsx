@@ -1,7 +1,8 @@
-import React from "react";
-import { Link } from "@inertiajs/react";
+import { useState, useEffect, React } from "react";
+import { Link, router } from "@inertiajs/react";
+import { FaTrashCan, FaPen, FaClock, FaEnvelope } from "react-icons/fa6";
 import Navbar from "./news_components/Navbar";
-import Footer from "./news_components/Footer";
+import Footer from "../../Components/Footer";
 
 export default function Index({ news }) {
     console.log("data = ", news);
@@ -51,12 +52,38 @@ export default function Index({ news }) {
                                         {post.deskripsi}
                                     </p>
                                     <div className="flex items-center justify-between mt-4 text-sm text-gray-300">
-                                        <span>{post.author}</span>
-                                        <span>
+                                        <span className="flex items-center gap-1 hover:text-indigo-400 transition-all ">
+                                            <FaEnvelope />
+                                            {post.author}
+                                        </span>
+
+                                        <span className="flex items-center gap-1">
+                                            {" "}
+                                            <FaClock />
                                             {new Date(
                                                 post.created_at
                                             ).toLocaleDateString()}
                                         </span>
+                                    </div>
+                                    <div className="mt-6 flex justify-end gap-2">
+                                        <Link
+                                            href={route("news.edit", post.id)}
+                                            as="button"
+                                            className=" hover:text-indigo-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                        >
+                                            <FaPen />
+                                        </Link>
+                                        <Link
+                                            href={route(
+                                                "news.destroy",
+                                                post.id
+                                            )}
+                                            method="delete"
+                                            as="button"
+                                            className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                        >
+                                            <FaTrashCan />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -84,16 +111,43 @@ export default function Index({ news }) {
                                     <h3 className="text-lg font-semibold mt-2 line-clamp-2">
                                         {post.judul}
                                     </h3>
-                                    <p className="text-sm text-gray-400 mt-2 line-clamp-3 flex-grow">
-                                        {post.deskripsi}
-                                    </p>
+                                    <div className="text-sm text-gray-400 mt-2 line-clamp-3 flex-grow">
+                                        <p>{post.deskripsi}</p>
+                                    </div>
+
                                     <div className="flex items-center justify-between mt-4 text-sm text-gray-300">
-                                        <span>{post.author}</span>
-                                        <span>
+                                        <span className="flex items-center gap-1 hover:text-indigo-400 transition-all ">
+                                            <FaEnvelope />
+                                            {post.author}
+                                        </span>
+
+                                        <span className="flex items-center gap-1">
+                                            {" "}
+                                            <FaClock />
                                             {new Date(
                                                 post.created_at
                                             ).toLocaleDateString()}
                                         </span>
+                                    </div>
+                                    <div className="mt-6 flex justify-end gap-2">
+                                        <Link
+                                            href={route("news.edit", post.id)}
+                                            as="button"
+                                            className=" hover:text-indigo-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                        >
+                                            <FaPen />
+                                        </Link>
+                                        <Link
+                                            href={route(
+                                                "news.destroy",
+                                                post.id
+                                            )}
+                                            method="delete"
+                                            as="button"
+                                            className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                        >
+                                            <FaTrashCan />
+                                        </Link>
                                     </div>
                                 </div>
                             </div>
@@ -117,13 +171,39 @@ export default function Index({ news }) {
                                     <p className="text-gray-400 text-sm line-clamp-3">
                                         {post.deskripsi}
                                     </p>
-                                    <div className="flex items-center justify-between mt-3 text-sm text-gray-300 hover:text-indigo-400">
-                                        <span>{post.author}</span>
-                                        <span>
+                                    <div className="flex items-center justify-between mt-4 text-sm text-gray-300">
+                                        <span className="flex items-center gap-1 hover:text-indigo-400 transition-all ">
+                                            <FaEnvelope />
+                                            {post.author}
+                                        </span>
+
+                                        <span className="flex items-center gap-1">
+                                            {" "}
+                                            <FaClock />
                                             {new Date(
                                                 post.created_at
                                             ).toLocaleDateString()}
                                         </span>
+                                    </div>
+                                    <div className="mt-6 flex justify-end gap-2">
+                                        <Link
+                                            href={route("news.edit", post.id)}
+                                            as="button"
+                                            className=" hover:text-indigo-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                        >
+                                            <FaPen />
+                                        </Link>
+                                        <Link
+                                            href={route(
+                                                "news.destroy",
+                                                post.id
+                                            )}
+                                            method="delete"
+                                            as="button"
+                                            className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                        >
+                                            <FaTrashCan />
+                                        </Link>
                                     </div>
                                 </div>
                             ))}

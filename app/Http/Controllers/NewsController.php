@@ -28,7 +28,7 @@ class NewsController extends Controller
             'deskripsi' => 'required|string|max:255',
             'kategori'  => 'required|string|max:255',
             'author'    => 'required|string|max:255',
-            'image'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image'     => 'required|nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
         $imagePath = null;
@@ -48,6 +48,14 @@ class NewsController extends Controller
 
         return redirect()->route('news.index')->with('success', 'News created successfully');
     }
+
+    public function show(News $news)
+    {
+        return Inertia::render('News/Show', [
+            'news' => $news
+        ]);
+    }
+
 
     public function edit(News $news)
     {
