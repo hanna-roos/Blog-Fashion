@@ -17,6 +17,7 @@ return new class extends Migration
             $table->string('deskripsi');
             $table->string('kategori');
             $table->string('author');
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); 
             $table->timestamps();
         });
     }

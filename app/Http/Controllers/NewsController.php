@@ -8,12 +8,15 @@ use Inertia\Inertia;
 
 class NewsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth'); // semua method butuh login
+    }
+
     public function index()
     {
         $news = News::latest()->get();
-        return Inertia::render('News/Index', [
-            'news' => $news
-        ]);
+        return Inertia::render('News/Index', ['news' => $news]);
     }
 
     public function create()
@@ -28,13 +31,17 @@ class NewsController extends Controller
             'deskripsi' => 'required|string|max:255',
             'kategori'  => 'required|string|max:255',
             'author'    => 'required|string|max:255',
-            'image'     => 'required|nullable|image|mimes:jpg,jpeg,png|max:2048',
+            'image'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $imagePath = null;
+        // limit post user
+        $limit = 2;
+        if (auth()->user()->news()->count() >= $limit && auth()->user()->role !== 'admin') {
+            return back()->with('error', 'Limit post blog sudah tercapai');
+        }
 
+        $imagePath = null;
         if ($request->hasFile('image')) {
-            // Simpan gambar ke storage/app/public/news_images
             $imagePath = $request->file('image')->store('news_images', 'public');
         }
 
@@ -44,28 +51,23 @@ class NewsController extends Controller
             'kategori'  => $request->kategori,
             'author'    => $request->author,
             'image'     => $imagePath,
+            'user_id'   => auth()->id(),
         ]);
 
         return redirect()->route('news.index')->with('success', 'News created successfully');
     }
 
-    public function show(News $news)
-    {
-        return Inertia::render('News/Show', [
-            'news' => $news
-        ]);
-    }
-
-
     public function edit(News $news)
     {
-        return Inertia::render('News/Edit', [
-            'news' => $news
-        ]);
+        $this->authorize('update', $news);
+
+        return Inertia::render('News/Edit', ['news' => $news]);
     }
 
     public function update(Request $request, News $news)
     {
+        $this->authorize('update', $news);
+
         $request->validate([
             'judul'     => 'required|string|max:255',
             'deskripsi' => 'required|string|max:255',
@@ -74,8 +76,7 @@ class NewsController extends Controller
             'image'     => 'nullable|image|mimes:jpg,jpeg,png|max:2048',
         ]);
 
-        $imagePath = $news->image; // default pakai gambar lama
-
+        $imagePath = $news->image;
         if ($request->hasFile('image')) {
             $imagePath = $request->file('image')->store('news_images', 'public');
         }
@@ -93,8 +94,14 @@ class NewsController extends Controller
 
     public function destroy(News $news)
     {
-        $news->delete();
+        $this->authorize('delete', $news);
 
+        $news->delete();
         return redirect()->route('news.index')->with('success', 'News deleted successfully');
+    }
+
+    public function show(News $news)
+    {
+        return Inertia::render('News/Show', ['news' => $news]);
     }
 }

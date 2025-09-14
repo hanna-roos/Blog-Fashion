@@ -2,12 +2,20 @@ import { useState, useRef, useEffect } from "react";
 
 // Profile Dropdown
 const ProfileDropDown = (props) => {
+    const handleLogout = () => {
+        router.post(route("logout"));
+    };
+
     const [state, setState] = useState(false);
     const profileRef = useRef();
 
     const navigation = [
-        { title: "Dashboard", path: "javascript:void(0)" },
-        { title: "Settings", path: "javascript:void(0)" },
+        { title: "Dashboard", path: route("dashboard") },
+        {
+            title: "Settings",
+            path: "javascript:void(0)",
+            onClick: handleLogout,
+        },
         { title: "Log out", path: "javascript:void(0)" },
     ];
 

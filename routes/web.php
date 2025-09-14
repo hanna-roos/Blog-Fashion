@@ -17,6 +17,10 @@ Route::get('/', [TampilanController::class, 'index'])->name('home');
 //         'phpVersion' => PHP_VERSION,
 //     ]);
 // });
+Route::middleware(['auth'])->group(function () {
+    Route::resource('news', NewsController::class);
+});
+
 Route::resource('news', NewsController::class);
 Route::resource('news', App\Http\Controllers\NewsController::class);
 

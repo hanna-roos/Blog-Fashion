@@ -1,10 +1,10 @@
 import { useState, useEffect, React } from "react";
 import { Link, router } from "@inertiajs/react";
 import { FaTrashCan, FaPen, FaClock, FaEnvelope } from "react-icons/fa6";
-import Navbar from "./news_components/Navbar";
+import Navbar from "../../Components/Navbar";
 import Footer from "../../Components/Footer";
 
-export default function Index({ news }) {
+export default function Index({ news, auth }) {
     console.log("data = ", news);
 
     return (
@@ -66,24 +66,31 @@ export default function Index({ news }) {
                                         </span>
                                     </div>
                                     <div className="mt-6 flex justify-end gap-2">
-                                        <Link
-                                            href={route("news.edit", post.id)}
-                                            as="button"
-                                            className=" hover:text-indigo-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
-                                        >
-                                            <FaPen />
-                                        </Link>
-                                        <Link
-                                            href={route(
-                                                "news.destroy",
-                                                post.id
-                                            )}
-                                            method="delete"
-                                            as="button"
-                                            className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
-                                        >
-                                            <FaTrashCan />
-                                        </Link>
+                                        {post.user_id === auth.user.id ||
+                                        auth.user.role === "admin" ? (
+                                            <>
+                                                <Link
+                                                    href={route(
+                                                        "news.edit",
+                                                        post.id
+                                                    )}
+                                                    as="button"
+                                                >
+                                                    <FaPen />
+                                                </Link>
+                                                <Link
+                                                    href={route(
+                                                        "news.destroy",
+                                                        post.id
+                                                    )}
+                                                    method="delete"
+                                                    as="button"
+                                                    className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                                >
+                                                    <FaTrashCan />
+                                                </Link>
+                                            </>
+                                        ) : null}
                                     </div>
                                 </div>
                             </div>
@@ -130,24 +137,31 @@ export default function Index({ news }) {
                                         </span>
                                     </div>
                                     <div className="mt-6 flex justify-end gap-2">
-                                        <Link
-                                            href={route("news.edit", post.id)}
-                                            as="button"
-                                            className=" hover:text-indigo-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
-                                        >
-                                            <FaPen />
-                                        </Link>
-                                        <Link
-                                            href={route(
-                                                "news.destroy",
-                                                post.id
-                                            )}
-                                            method="delete"
-                                            as="button"
-                                            className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
-                                        >
-                                            <FaTrashCan />
-                                        </Link>
+                                        {post.user_id === auth.user.id ||
+                                        auth.user.role === "admin" ? (
+                                            <>
+                                                <Link
+                                                    href={route(
+                                                        "news.edit",
+                                                        post.id
+                                                    )}
+                                                    as="button"
+                                                >
+                                                    <FaPen />
+                                                </Link>
+                                                <Link
+                                                    href={route(
+                                                        "news.destroy",
+                                                        post.id
+                                                    )}
+                                                    method="delete"
+                                                    as="button"
+                                                    className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                                >
+                                                    <FaTrashCan />
+                                                </Link>
+                                            </>
+                                        ) : null}
                                     </div>
                                 </div>
                             </div>
@@ -186,24 +200,31 @@ export default function Index({ news }) {
                                         </span>
                                     </div>
                                     <div className="mt-6 flex justify-end gap-2">
-                                        <Link
-                                            href={route("news.edit", post.id)}
-                                            as="button"
-                                            className=" hover:text-indigo-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
-                                        >
-                                            <FaPen />
-                                        </Link>
-                                        <Link
-                                            href={route(
-                                                "news.destroy",
-                                                post.id
-                                            )}
-                                            method="delete"
-                                            as="button"
-                                            className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
-                                        >
-                                            <FaTrashCan />
-                                        </Link>
+                                        {post.user_id === auth.user.id ||
+                                        auth.user.role === "admin" ? (
+                                            <>
+                                                <Link
+                                                    href={route(
+                                                        "news.edit",
+                                                        post.id
+                                                    )}
+                                                    as="button"
+                                                >
+                                                    <FaPen />
+                                                </Link>
+                                                <Link
+                                                    href={route(
+                                                        "news.destroy",
+                                                        post.id
+                                                    )}
+                                                    method="delete"
+                                                    as="button"
+                                                    className="hover:text-red-700 text-white rounded-md text-lg transition-all px-4 py-2 flex items-center gap-2"
+                                                >
+                                                    <FaTrashCan />
+                                                </Link>
+                                            </>
+                                        ) : null}
                                     </div>
                                 </div>
                             ))}
