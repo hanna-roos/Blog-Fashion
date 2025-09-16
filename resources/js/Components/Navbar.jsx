@@ -1,11 +1,8 @@
 import { useState, useRef, useEffect } from "react";
+import { Link } from "@inertiajs/react";
 
 // Profile Dropdown
 const ProfileDropDown = (props) => {
-    const handleLogout = () => {
-        router.post(route("logout"));
-    };
-
     const [state, setState] = useState(false);
     const profileRef = useRef();
 
@@ -13,10 +10,8 @@ const ProfileDropDown = (props) => {
         { title: "Dashboard", path: route("dashboard") },
         {
             title: "Settings",
-            path: "javascript:void(0)",
-            onClick: handleLogout,
+            path: "javascript:void(0)", // nanti bisa diarahkan ke settings page
         },
-        { title: "Log out", path: "javascript:void(0)" },
     ];
 
     useEffect(() => {
@@ -35,7 +30,7 @@ const ProfileDropDown = (props) => {
                     onClick={() => setState(!state)}
                 >
                     <img
-                        src="https://randomuser.me/api/portraits/men/46.jpg"
+                        src="https://randomuser.me/api/portraits/men/30.jpg"
                         className="w-full h-full rounded-full"
                     />
                 </button>
@@ -52,9 +47,8 @@ const ProfileDropDown = (props) => {
                 }`}
             >
                 {navigation.map((item, idx) => (
-                    <li>
+                    <li key={idx} className="lg:border-b last:lg:border-none">
                         <a
-                            key={idx}
                             className="block text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
                             href={item.path}
                         >
@@ -62,6 +56,14 @@ const ProfileDropDown = (props) => {
                         </a>
                     </li>
                 ))}
+                <Link
+                    href={route("logout")}
+                    method="post"
+                    as="button"
+                    className="block w-full text-left text-gray-600 lg:hover:bg-gray-50 lg:p-2.5"
+                >
+                    Log Out
+                </Link>
             </ul>
         </div>
     );

@@ -35,7 +35,7 @@ class NewsController extends Controller
         ]);
 
         // limit post user
-        $limit = 2;
+        $limit = 10;
         if (auth()->user()->news()->count() >= $limit && auth()->user()->role !== 'admin') {
             return back()->with('error', 'Limit post blog sudah tercapai');
         }
