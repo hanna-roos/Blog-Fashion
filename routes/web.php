@@ -9,6 +9,15 @@ use Inertia\Inertia;
 
 Route::get('/', [TampilanController::class, 'index'])->name('home');
 
+Route::get('/topic', function () {
+    return Inertia::render('TopicPage'); // nama file jsx
+})->name('topic');
+
+Route::get('/article', function () {
+    return Inertia::render('ArticlePage'); // nama file jsx
+})->name('article');
+
+
 
 // Route::get('/', function () {
 //     return Inertia::render('Welcome', [
@@ -30,5 +39,7 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+
+
 
 require __DIR__.'/auth.php';

@@ -64,10 +64,11 @@ export default () => {
 
     // Replace javascript:void(0) path with your path
     const navigation = [
-        { title: "Customers", path: "javascript:void(0)" },
-        { title: "Careers", path: "javascript:void(0)" },
-        { title: "Guides", path: "javascript:void(0)" },
-        { title: "Partners", path: "javascript:void(0)" },
+        { title: "Home", path: "/home" },
+        { title: "About", path: "/about" },
+        { title: "Topic", path: "/topic" },
+        { title: "Gallery", path: "/gallery" },
+        { title: "Blogs", path: "/blogs" },
     ];
     return (
         <nav className="bg-[#141E7E] ">
