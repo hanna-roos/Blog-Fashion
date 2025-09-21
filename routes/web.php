@@ -9,6 +9,10 @@ use Inertia\Inertia;
 
 Route::get('/', [TampilanController::class, 'index'])->name('home');
 
+Route::get('/about', function () {
+    return Inertia::render('AboutPage'); // nama file jsx
+})->name('about');
+
 Route::get('/topic', function () {
     return Inertia::render('TopicPage'); // nama file jsx
 })->name('topic');
