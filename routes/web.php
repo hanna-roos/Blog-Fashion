@@ -17,6 +17,10 @@ Route::get('/topic', function () {
     return Inertia::render('TopicPage'); // nama file jsx
 })->name('topic');
 
+Route::get('/gallery', function () {
+    return Inertia::render('GalleryPage'); // nama harus sama dengan file di Pages
+});
+
 Route::get('/article', function () {
     return Inertia::render('ArticlePage'); // nama file jsx
 })->name('article');

@@ -10,9 +10,22 @@ export default function Index({ news }) {
         <>
             <Navbar />
 
-            <section className="bg-black text-white py-12 px-6">
+            <section className="hero-section">
+                <div className="hero-content">
+                    <h1 className="hero-title" data-aos="fade-up">
+                        Blogs
+                    </h1>
+                    <div
+                        className="hero-scroll-indicator"
+                        data-aos="fade-up"
+                        data-aos-delay={400}
+                    ></div>
+                </div>
+            </section>
+
+            <section className="bg-white text-black py-12 px-6">
                 <div className="max-w-7xl mx-auto">
-                    <h2 className="text-5xl font-bold mb-4">Blog</h2>
+                    <h2 className="hero-title text-5xl font-bold mb-4">Blog</h2>
                     <p className="font-light mb-5">
                         Stay Tune About OOTD Every Day
                     </p>
@@ -20,7 +33,7 @@ export default function Index({ news }) {
                     <div className="mb-6">
                         <Link
                             href={route("news.create")}
-                            className="px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded-md"
+                            className="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-md"
                         >
                             + Tambah News
                         </Link>
@@ -31,7 +44,7 @@ export default function Index({ news }) {
                         {news.slice(0, 2).map((post) => (
                             <div
                                 key={post.id}
-                                className="bg-zinc-900 rounded-xl overflow-hidden shadow hover:shadow-lg transition flex flex-col"
+                                className="bg-gray-400 rounded-xl overflow-hidden shadow hover:shadow-lg transition flex flex-col"
                             >
                                 {post.image && (
                                     <img

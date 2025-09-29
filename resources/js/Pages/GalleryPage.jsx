@@ -1,7 +1,7 @@
 import React from "react";
 import { Head, Link } from "@inertiajs/react";
 import Navbar from "@/Components/Navbar";
-import Topic from "@/Components/Topic";
+import Gallery from "@/Components/Gallery";
 import Footer from "@/Components/Footer";
 
 export default function HomePage(props) {
@@ -9,7 +9,7 @@ export default function HomePage(props) {
     return (
         <div>
             <Navbar />
-            <Topic />
+            <Gallery />
             <Footer />
         </div>
     );

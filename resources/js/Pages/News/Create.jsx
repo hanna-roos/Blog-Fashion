@@ -17,9 +17,11 @@ export default function Create() {
     };
 
     return (
-        <div className="max-w-2xl mx-auto mt-10 bg-[#141E7E] p-6 rounded-lg shadow">
+        <div className="max-w-2xl mx-auto mt-10 bg-[#3D48B0] p-6 rounded-lg shadow">
             <Head title="Create News" />
-            <h1 className="text-2xl font-bold mb-4 text-center">Tambah News</h1>
+            <h1 className="text-2xl font-bold mb-4 text-center font-[var(--font-lux)]">
+                Tambah News
+            </h1>
 
             <form onSubmit={submit} className="space-y-4">
                 <div>
@@ -92,7 +94,7 @@ export default function Create() {
 
                 <button
                     type="submit"
-                    className="bg-blue-500 transition-all text-white px-4 py-2 rounded hover:bg-blue-700"
+                    className="bg-indigo-500 transition-all text-white px-4 py-2 rounded hover:bg-indigo-700"
                 >
                     Simpan
                 </button>

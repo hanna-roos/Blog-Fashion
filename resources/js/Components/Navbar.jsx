@@ -64,11 +64,11 @@ export default () => {
 
     // Replace javascript:void(0) path with your path
     const navigation = [
-        { title: "Home", path: "/home" },
+        { title: "Home", path: "/" },
         { title: "About", path: "/about" },
         { title: "Topic", path: "/topic" },
         { title: "Gallery", path: "/gallery" },
-        { title: "Blogs", path: "/blogs" },
+        { title: "Blogs", path: "/news" },
     ];
     return (
         <nav className="bg-[#141E7E] ">
@@ -91,7 +91,7 @@ export default () => {
                             {navigation.map((item, idx) => (
                                 <li
                                     key={idx}
-                                    className="text-white-600 hover:text-gray-900"
+                                    className="text-white hover:text-gray-300"
                                 >
                                     <a href={item.path}>{item.title}</a>
                                 </li>
@@ -103,7 +103,7 @@ export default () => {
                         <form className="flex items-center space-x-2 rounded-md p-2">
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
-                                className="h-6 w-6 flex-none text-white-600"
+                                className="h-6 w-6 flex-none text-white"
                                 fill="none"
                                 viewBox="0 0 24 24"
                                 stroke="currentColor"
