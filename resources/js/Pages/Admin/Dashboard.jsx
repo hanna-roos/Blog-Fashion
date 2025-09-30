@@ -9,5 +9,5 @@ export default function Dashboard() {
         <div className="rounded-xl border bg-white p-6">Welcome, admin!</div>
       </div>
     </AuthenticatedLayout>
-  );
+  );
 }
